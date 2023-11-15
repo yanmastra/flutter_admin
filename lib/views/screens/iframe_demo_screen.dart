@@ -1,6 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
 // import 'dart:html' as html;
-import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:pointer_interceptor/pointer_interceptor.dart';
@@ -105,11 +104,12 @@ class _IFrameDemoScreenState extends State<IFrameDemoScreen> {
         SizedBox(
           height: iframeHeight,
           width: iframeWidth,
-          child: HtmlIFrame(
-            url: url,
-            height: iframeHeight.toInt(),
-            width: iframeWidth.toInt(),
-          ),
+          child: Text("Web View"),
+          // HtmlIFrame(
+          //   url: url,
+          //   height: iframeHeight.toInt(),
+          //   width: iframeWidth.toInt(),
+          // ),
         ),
         ValueListenableBuilder<bool>(
           valueListenable: _isDrawerOpenedVN,
@@ -133,39 +133,39 @@ class _IFrameDemoScreenState extends State<IFrameDemoScreen> {
   }
 }
 
-class HtmlIFrame extends StatelessWidget {
-  final String url;
-  final int height;
-  final int width;
+// class HtmlIFrame extends StatelessWidget {
+//   final String url;
+//   final int height;
+//   final int width;
 
-  const HtmlIFrame({
-    Key? key,
-    required this.url,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
+//   const HtmlIFrame({
+//     Key? key,
+//     required this.url,
+//     required this.height,
+//     required this.width,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final iframe = html.IFrameElement();
+//   @override
+//   Widget build(BuildContext context) {
+//     final iframe = html.IFrameElement();
 
-    iframe.height = '$height';
-    iframe.width = '$width';
-    iframe.src = url;
-    iframe.style.border = 'none';
-    iframe.allowFullscreen = false;
+//     iframe.height = '$height';
+//     iframe.width = '$width';
+//     iframe.src = url;
+//     iframe.style.border = 'none';
+//     iframe.allowFullscreen = false;
 
-    final viewType = 'iframeElement_$url';
+//     final viewType = 'iframeElement_$url';
 
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(
-      viewType,
-      (int viewId) => iframe,
-    );
+//     // ignore: undefined_prefixed_name
+//     ui.platformViewRegistry.registerViewFactory(
+//       viewType,
+//       (int viewId) => iframe,
+//     );
 
-    return HtmlElementView(
-      key: ValueKey(viewType),
-      viewType: viewType,
-    );
-  }
-}
+//     return HtmlElementView(
+//       key: ValueKey(viewType),
+//       viewType: viewType,
+//     );
+//   }
+// }
